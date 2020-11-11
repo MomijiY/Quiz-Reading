@@ -1,0 +1,6 @@
+framework module Pods_Quiz_ReadingTests {
+  umbrella header "Pods-Quiz-ReadingTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
