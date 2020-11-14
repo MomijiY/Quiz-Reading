@@ -10,33 +10,33 @@ import RealmSwift
 
 class ListTableViewController: UITableViewController {
 
-    var Item: Results<Quiz>!
-    var items = [Quiz]()
+    var quizzes = [Quiz]()
     var quizArray: [Dictionary<String, String>] = []
     
     let realm = try! Realm()
-    let cellHeight: CGFloat = 60
+    let cellHeight: CGFloat = 80
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: "QUIZ") as? [Dictionary<String, String>] != nil {
-            quizArray = UserDefaults.standard.object(forKey: "QUIZ") as! [Dictionary<String, String>]
-        }
-        
-        tableView.register(QuizTableViewCell.nib, forCellReuseIdentifier: QuizTableViewCell.reuseIdentifier)
-        loadQuiz()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableView.register(QuizTableViewCell.nib, forCellReuseIdentifier: QuizTableViewCell.reuseIdentifier)
+        tableView.tableFooterView = UIView()
         loadQuiz()
     }
     
     func loadQuiz() {
+        if UserDefaults.standard.object(forKey: "QUIZ") as? [Dictionary<String, String>] != nil {
+            quizArray = UserDefaults.standard.object(forKey: "QUIZ") as! [Dictionary<String, String>]
+            print(quizArray)
+        }
+        
         let results = realm.objects(Quiz.self)
-        items = [Quiz]()
+        quizzes = [Quiz]()
         
         for qz in results {
-            items.append(qz)
+            quizzes.append(qz)
         }
         tableView.reloadData()
     }
@@ -50,19 +50,18 @@ class ListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return quizzes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuizTableViewCell.reuseIdentifier, for: indexPath) as! QuizTableViewCell
         
-        let content = items[indexPath.row]
+        let content = quizzes[indexPath.row]
         
         cell.setUpCell(question: content.question, answer: content.answer)
-
         let selectionView = UIView()
-        selectionView.backgroundColor = UIColor(red: 230/255, green: 220/255, blue: 201/255, alpha: 1.0)
+        selectionView.backgroundColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 0.6)
         cell.selectedBackgroundView = selectionView
         return cell
     }
@@ -79,9 +78,9 @@ class ListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             try! realm.write {
-                print("削除")
-                realm.delete(items[indexPath.row])
-                items.remove(at: indexPath.row)
+                print(quizArray)
+                realm.delete(quizzes[indexPath.row])
+                quizzes.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 quizArray.remove(at: indexPath.row)
                 tableView.reloadData()
@@ -91,7 +90,7 @@ class ListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let quiz = items[indexPath.row]
+        let quiz = quizzes[indexPath.row]
         UserDefaults.standard.set(quiz.question, forKey: "question")
         UserDefaults.standard.set(quiz.answer, forKey: "answer")
         self.performSegue(withIdentifier: "toDetail", sender: nil)

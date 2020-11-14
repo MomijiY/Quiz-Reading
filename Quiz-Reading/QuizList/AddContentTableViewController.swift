@@ -30,6 +30,16 @@ class AddContentTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        questionTextView.delegate = self
+        answerTextField.delegate = self
+        configureUI()
+        
+        if UserDefaults.standard.array(forKey: "QUIZ") != nil {
+            quizArray = UserDefaults.standard.array(forKey: "QUIZ") as! [Dictionary<String, String>]
+        }
+    }
     @IBAction func tappedSaveButton(_ sender: UIButton) {
         if questionTextView.text == "" || answerTextField.text == ""{
             alert(title: "問題または回答の欄に空白があります。", message: "問題とそれに対する答えを入力してください。")

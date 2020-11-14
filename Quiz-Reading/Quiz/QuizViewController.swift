@@ -15,6 +15,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var showAnswerButton: UIButton!
+//    @IBOutlet weak var questionTextView: UITextView!
     
     var Item: Results<Quiz>!
     var items = [Quiz]()
@@ -24,14 +25,18 @@ class QuizViewController: UIViewController {
     var answerButtonTappedCount: Int = 0
     var showButtonTappedCount: Int = 0
     var showAnswerBool: Bool = false
+    var player: AVAudioPlayer?
     
     let speechService = SpeechService()
     let answerSpeechService = AnswerSpeechService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         quizArray = UserDefaults.standard.object(forKey: "QUIZ") as! [Dictionary<String, String>]
         quizArray.shuffle()
+        print(quizArray)
+//        questionTextView.text = quizArray[nowNumber]["question"]
         questionLabel.text = quizArray[nowNumber]["question"]
         answerLabel.text = ""
         setUpLayout()
@@ -60,11 +65,15 @@ class QuizViewController: UIViewController {
             if nowNumber < quizArray.count {
                 self.navigationController?.navigationItem.title = "Q.\(nowNumber)"
                 questionLabel.text = quizArray[nowNumber]["question"]
+//                questionTextView.text = quizArray[nowNumber]["question"]
                 speechService.say(questionLabel.text!)
+                answerSpeechService.stop()
                 isAnswered = false
                 nextButton.setTitle("分かった", for: .normal)
                 print("isAnswered = false \(isAnswered)")
             } else {
+                speechService.stop()
+                answerSpeechService.stop()
                 UserDefaults.standard.set(quizArray.count, forKey: "allQuizNum")
                 let correctAnswer = quizArray.count - showButtonTappedCount
                 UserDefaults.standard.set(correctAnswer, forKey: "correctAnswer")
@@ -74,6 +83,11 @@ class QuizViewController: UIViewController {
             }
         } else if answerButtonTappedCount == 1 {
             answerButtonTappedCount = 2
+            let soundURL = Bundle.main.url(forResource: "Quiz-Buzzer", withExtension: "mp3")
+            do {
+                player = try! AVAudioPlayer(contentsOf: soundURL!)
+                player?.play()
+            }
             nextButton.setTitle("答えを表示", for: .normal)
             speechService.stop()
         } else {
@@ -89,6 +103,7 @@ class QuizViewController: UIViewController {
     
     @IBAction func tappedShowAnswerButton(_ sender: UIButton) {
         showButtonTappedCount += 1
+        answerButtonTappedCount = 0
         showAnswerBool = true
         UserDefaults.standard.set(showAnswerBool, forKey: "showAnswer")
         answerLabel.text = quizArray[nowNumber]["answer"]
@@ -104,6 +119,9 @@ class QuizViewController: UIViewController {
         answerSpeechService.say(answerLabel.text!)
     }
     
+    func stopAnswer() {
+        answerSpeechService.stop()
+    }
     func setUpLayout() {
         nextButton.layer.cornerRadius = 10
         showAnswerButton.layer.cornerRadius = 10

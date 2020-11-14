@@ -13,7 +13,7 @@ class QuizTableViewCell: UITableViewCell {
     @IBOutlet weak var answerLabel: UILabel!
     
     static let reuseIdentifier = "QuizTableViewCell"
-    static let rowHeight: CGFloat = 60
+    static let rowHeight: CGFloat = 80
     static var nib: UINib {
         return UINib(nibName: "QuizTableViewCell", bundle: nil)
     }
