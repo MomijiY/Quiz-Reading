@@ -44,6 +44,7 @@ class AddContentTableViewController: UITableViewController, UITextFieldDelegate,
         saveQuiz()
     }
     func configureUI() {
+        questionTextView.becomeFirstResponder()
         //color
         questionTextView.tintColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 1.0)
         answerTextField.tintColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 1.0)

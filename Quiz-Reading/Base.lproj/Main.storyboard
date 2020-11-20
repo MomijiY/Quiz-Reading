@@ -28,7 +28,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C4Y-ka-wdN" kind="show" id="kNh-ar-bIx"/>
+                                    <action selector="tappedReadingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Caw-v6-235"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwf-ZJ-Uej">
@@ -68,6 +68,7 @@
                     <connections>
                         <outlet property="addButton" destination="Qwf-ZJ-Uej" id="HEq-d1-aoX"/>
                         <outlet property="readingButton" destination="HK8-Yp-KbG" id="7PY-Cf-BXr"/>
+                        <segue destination="C4Y-ka-wdN" kind="show" identifier="toReading" id="skA-7L-mLx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -32,10 +32,6 @@ class ListTableViewController: UITableViewController {
             print("quizArray:\(quizArray)")
             quizzes = [Quiz]()
             
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "yMdHms"
-//            let date = Date()
-//            let dateStr = formatter.string(from: "date")
             let results = realm.objects(Quiz.self).sorted(byKeyPath: "date")
             
             for qz in results {

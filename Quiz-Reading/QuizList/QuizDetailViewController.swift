@@ -27,7 +27,6 @@ class QuizDetailViewController: UITableViewController {
         quizArrayFromList = UserDefaults.standard.array(forKey: "quizFromList") as! [Dictionary<String, String>]
         nowID = UserDefaults.standard.object(forKey: "id") as? String
         indexPathUdf = UserDefaults.standard.object(forKey: "indexPath") as? Int
-        print("indexPathUdf: ",indexPathUdf)
         configureUI()
     }
     
