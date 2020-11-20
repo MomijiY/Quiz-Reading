@@ -16,10 +16,11 @@ class Timertext: UITextView {
     //処理中フラグ
     var flgRun = false
 
+    var timer: Timer?
     override func draw(_ rect: CGRect) {
 
         let tmr = Timer.scheduledTimer(
-            timeInterval: 0.2,
+            timeInterval: 0.05,
             target: self,
             selector: #selector(tickTimer(_:)),
             userInfo: nil,
@@ -31,6 +32,47 @@ class Timertext: UITextView {
         tmr.fire()
     }
 
+    func startAnimation() {
+        let tmr = Timer.scheduledTimer(
+            timeInterval: 0.15,
+            target: self,
+            selector: #selector(tickTimer(_:)),
+            userInfo: nil,
+            repeats: true)
+
+        titlestr = self.text
+        self.text = ""
+
+        tmr.fire()
+    }
+    
+    func stopAnimation() {
+        let tmr = Timer.scheduledTimer(
+            timeInterval: 0.15,
+            target: self,
+            selector: #selector(tickTimer(_:)),
+            userInfo: nil,
+            repeats: true)
+
+        titlestr = self.text
+        self.text = ""
+
+        tmr.invalidate()
+    }
+    
+    func startFastAnimation() {
+        let tmr = Timer.scheduledTimer(
+            timeInterval: 0.01,
+            target: self,
+            selector: #selector(tickTimer(_:)),
+            userInfo: nil,
+            repeats: true)
+
+        titlestr = self.text
+        self.text = ""
+
+        tmr.fire()
+    }
     @objc func tickTimer(_ timer: Timer) {
         //表示文字インデックス判定
         if idx < titlestr.count {
@@ -45,6 +87,7 @@ class Timertext: UITextView {
 
             //処理中フラグOFF
             flgRun = false
+            idx = 0
         }
     }
 }

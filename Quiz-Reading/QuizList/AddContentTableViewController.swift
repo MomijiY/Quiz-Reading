@@ -18,7 +18,7 @@ class AddContentTableViewController: UITableViewController, UITextFieldDelegate,
     let items = Quiz()
     
     var quizArray: [Dictionary<String, String>] = []
-    
+//    var quizCount: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         questionTextView.delegate = self
@@ -41,24 +41,7 @@ class AddContentTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     @IBAction func tappedSaveButton(_ sender: UIButton) {
-        if questionTextView.text == "" || answerTextField.text == ""{
-            alert(title: "問題または回答の欄に空白があります。", message: "問題とそれに対する答えを入力してください。")
-            
-        } else {
-            items.question = questionTextView.text!
-            items.answer = answerTextField.text!
-            
-            let quizDictionary = ["question": items.question, "answer": items.answer]
-            quizArray.append(quizDictionary)
-            UserDefaults.standard.set(quizArray, forKey: "QUIZ")
-            
-            
-            try! realm.write{
-                let quiz = [Quiz(value: ["question": items.question, "answer": items.answer])]
-                realm.add(quiz)
-            }
-            self.navigationController?.popViewController(animated: true)
-        }
+        saveQuiz()
     }
     func configureUI() {
         //color
@@ -84,6 +67,30 @@ class AddContentTableViewController: UITableViewController, UITextFieldDelegate,
         answerTextField.inputAccessoryView = toolbar2
     }
     
+    func saveQuiz() {
+        if questionTextView.text == "" || answerTextField.text == ""{
+            alert(title: "問題または回答の欄に空白があります。", message: "問題とそれに対する答えを入力してください。")
+            
+        } else {
+            items.question = questionTextView.text!
+            items.answer = answerTextField.text!
+            
+            let quizDictionary = ["question": items.question, "answer": items.answer]
+            quizArray.append(quizDictionary)
+            UserDefaults.standard.set(quizArray, forKey: "QUIZ")
+            
+//            let quizDictionary = ["question": items.question, "answer": items.answer]
+//            let dicQuiz = Quiz(value: quizDictionary)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMdHms", options: 0, locale: Locale(identifier: "ja_JP"))
+            try! realm.write{
+                let quiz = [Quiz(value: ["question": items.question, "answer": items.answer, "id": UUID().uuidString, "date": dateFormatter.string(from: Date())])]
+                realm.add(quiz)
+//                realm.add(dicQuiz)
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     @objc func done() {
         questionTextView.endEditing(true)
     }

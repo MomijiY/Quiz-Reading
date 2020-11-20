@@ -15,7 +15,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var showAnswerButton: UIButton!
-//    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var questionTextView: Timertext!
     
     var Item: Results<Quiz>!
     var items = [Quiz]()
@@ -36,19 +36,35 @@ class QuizViewController: UIViewController {
         quizArray = UserDefaults.standard.object(forKey: "QUIZ") as! [Dictionary<String, String>]
         quizArray.shuffle()
         print(quizArray)
-//        questionTextView.text = quizArray[nowNumber]["question"]
         questionLabel.text = quizArray[nowNumber]["question"]
+        questionLabel.isHidden = true
         answerLabel.text = ""
         setUpLayout()
         UserDefaults.standard.removeObject(forKey: "showAnswer")
         //イヤホンジャックが抜けた時に止める
         NotificationCenter.default.addObserver(self, selector: #selector(onAudioSessionRouteChange(notification:)), name: AVAudioSession.routeChangeNotification, object: nil)
+        questionTextView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
+        
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            if let textView = object as? UITextView {
+                var topCorrect = (textView.bounds.size.height - textView.contentSize.height * textView.zoomScale) / 2
+                topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect;
+                textView.contentInset.top = topCorrect
+            }
+        }
+        deinit {
+            questionTextView.removeObserver(self, forKeyPath: "contentSize")
+        }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         answerButtonTappedCount = 1
+        questionTextView.text = quizArray[nowNumber]["question"]
         speechService.say(questionLabel.text!)
+        questionTextView.startAnimation()
         nextButton.setTitle("分かった", for: .normal)
     }
     
@@ -65,8 +81,9 @@ class QuizViewController: UIViewController {
             if nowNumber < quizArray.count {
                 self.navigationController?.navigationItem.title = "Q.\(nowNumber)"
                 questionLabel.text = quizArray[nowNumber]["question"]
-//                questionTextView.text = quizArray[nowNumber]["question"]
+                questionTextView.text = quizArray[nowNumber]["question"]
                 speechService.say(questionLabel.text!)
+                questionTextView.startAnimation()
                 answerSpeechService.stop()
                 isAnswered = false
                 nextButton.setTitle("分かった", for: .normal)
@@ -90,6 +107,7 @@ class QuizViewController: UIViewController {
             }
             nextButton.setTitle("答えを表示", for: .normal)
             speechService.stop()
+            questionTextView.stopAnimation()
         } else {
             answerLabel.text = quizArray[nowNumber]["answer"]
             isAnswered = true
@@ -97,6 +115,7 @@ class QuizViewController: UIViewController {
             nextButton.setTitle("次へ", for: .normal)
             readAnswer()
             speechService.stop()
+            questionTextView.text = quizArray[nowNumber]["question"]
             answerButtonTappedCount = 0
         }
     }

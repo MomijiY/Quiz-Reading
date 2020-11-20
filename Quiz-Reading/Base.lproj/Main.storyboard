@@ -45,25 +45,22 @@
                                     <segue destination="X4f-eT-FmD" kind="show" id="10J-9g-Etz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUIZZING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVo-HH-72G">
-                                <rect key="frame" x="20" y="198" width="374" height="163"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="PmC-LI-X53">
+                                <rect key="frame" x="87" y="168" width="240" height="240"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.81960784313725488" green="0.92549019607843142" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Qwf-ZJ-Uej" firstAttribute="top" secondItem="HK8-Yp-KbG" secondAttribute="bottom" constant="8" symbolic="YES" id="7QI-Bv-Ndf"/>
-                            <constraint firstItem="XVo-HH-72G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="C7V-jg-Ehn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XVo-HH-72G" secondAttribute="trailing" constant="20" id="Hab-CO-goJ"/>
-                            <constraint firstItem="HK8-Yp-KbG" firstAttribute="top" secondItem="XVo-HH-72G" secondAttribute="bottom" constant="127" id="LV3-V3-ACR"/>
+                            <constraint firstItem="PmC-LI-X53" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="9IO-ZH-sFx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qwf-ZJ-Uej" secondAttribute="bottom" constant="170" id="O1a-Dg-jDx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qwf-ZJ-Uej" secondAttribute="trailing" constant="127" id="RQs-Cd-Ppv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PmC-LI-X53" secondAttribute="trailing" constant="87" id="ZEH-a8-v1f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HK8-Yp-KbG" secondAttribute="trailing" constant="127" id="ffi-Iq-z9c"/>
-                            <constraint firstItem="XVo-HH-72G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="110" id="gvL-XK-vgg"/>
+                            <constraint firstItem="HK8-Yp-KbG" firstAttribute="top" secondItem="PmC-LI-X53" secondAttribute="bottom" constant="80" id="jFg-il-LpC"/>
                             <constraint firstItem="HK8-Yp-KbG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="128" id="jGh-Ef-z36"/>
+                            <constraint firstItem="PmC-LI-X53" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="pGL-lf-F0v"/>
                             <constraint firstItem="Qwf-ZJ-Uej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="128" id="vEG-4s-wnZ"/>
                         </constraints>
                     </view>
@@ -181,16 +178,29 @@
                                     <action selector="tappedShowAnswerButton:" destination="C4Y-ka-wdN" eventType="touchUpInside" id="qyK-bs-nr3"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YED-Vy-PZ1" customClass="Timertext" customModule="Quiz_Reading" customModuleProvider="target">
+                                <rect key="frame" x="20" y="88" width="374" height="352"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="jhX-jB-mNb"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ssh-N6-uwA"/>
                         <color key="backgroundColor" red="0.82050187539999997" green="0.92394799660000004" blue="0.81829230239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="GfN-I2-fUd" firstAttribute="leading" secondItem="Ssh-N6-uwA" secondAttribute="leading" constant="20" id="5qm-Ab-scA"/>
+                            <constraint firstItem="YED-Vy-PZ1" firstAttribute="top" secondItem="Ssh-N6-uwA" secondAttribute="top" id="7yx-gc-Baw"/>
+                            <constraint firstItem="YED-Vy-PZ1" firstAttribute="leading" secondItem="Ssh-N6-uwA" secondAttribute="leading" constant="20" id="AiP-NS-WZJ"/>
                             <constraint firstItem="cYO-Nf-X28" firstAttribute="top" secondItem="GfN-I2-fUd" secondAttribute="bottom" constant="71" id="Cah-ug-aWa"/>
                             <constraint firstItem="Ssh-N6-uwA" firstAttribute="trailing" secondItem="EAi-41-JYE" secondAttribute="trailing" constant="44" id="Djm-n8-LNm"/>
                             <constraint firstItem="Ssh-N6-uwA" firstAttribute="bottom" secondItem="EAi-41-JYE" secondAttribute="bottom" constant="164" id="Hnj-Cq-MIp"/>
                             <constraint firstItem="GfN-I2-fUd" firstAttribute="top" secondItem="7jV-FQ-gQh" secondAttribute="bottom" constant="8" symbolic="YES" id="J3R-6F-qnK"/>
                             <constraint firstItem="EAi-41-JYE" firstAttribute="top" secondItem="GfN-I2-fUd" secondAttribute="bottom" constant="71" id="MQz-Md-mbf"/>
+                            <constraint firstItem="Ssh-N6-uwA" firstAttribute="trailing" secondItem="YED-Vy-PZ1" secondAttribute="trailing" constant="20" id="T4d-X1-Zal"/>
                             <constraint firstItem="7jV-FQ-gQh" firstAttribute="leading" secondItem="Ssh-N6-uwA" secondAttribute="leading" constant="20" id="TRk-lp-4LF"/>
                             <constraint firstItem="cYO-Nf-X28" firstAttribute="leading" secondItem="Ssh-N6-uwA" secondAttribute="leading" constant="44" id="UY6-dQ-x3p"/>
                             <constraint firstItem="Ssh-N6-uwA" firstAttribute="bottom" secondItem="cYO-Nf-X28" secondAttribute="bottom" constant="164" id="Ykh-sd-ndv"/>
@@ -204,6 +214,7 @@
                         <outlet property="answerLabel" destination="GfN-I2-fUd" id="KfQ-6u-b3f"/>
                         <outlet property="nextButton" destination="cYO-Nf-X28" id="l2k-uF-dlw"/>
                         <outlet property="questionLabel" destination="7jV-FQ-gQh" id="RkW-c9-7vL"/>
+                        <outlet property="questionTextView" destination="YED-Vy-PZ1" id="Wqc-Ct-d85"/>
                         <outlet property="showAnswerButton" destination="EAi-41-JYE" id="pWT-Av-YRT"/>
                         <segue destination="SDE-gk-qBq" kind="presentation" identifier="toFinishView" id="5b4-up-snj"/>
                     </connections>
@@ -548,6 +559,7 @@ C/A</string>
         </scene>
     </scenes>
     <resources>
+        <image name="icon.png" width="1536" height="1536"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

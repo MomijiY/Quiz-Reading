@@ -17,12 +17,17 @@ class QuizDetailViewController: UITableViewController {
     let realm = try! Realm()
     let quiz =  Quiz()
     var quizArray: [Dictionary<String, String>] = []
-    
+    var quizArrayFromList: [Dictionary<String, String>] = []
+    var nowID: String?
+    var indexPathUdf: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         questionTextView.text = UserDefaults.standard.object(forKey: "question") as? String
         answerTextField.text = UserDefaults.standard.object(forKey: "answer") as? String
-        
+        quizArrayFromList = UserDefaults.standard.array(forKey: "quizFromList") as! [Dictionary<String, String>]
+        nowID = UserDefaults.standard.object(forKey: "id") as? String
+        indexPathUdf = UserDefaults.standard.object(forKey: "indexPath") as? Int
+        print("indexPathUdf: ",indexPathUdf)
         configureUI()
     }
     
@@ -35,18 +40,18 @@ class QuizDetailViewController: UITableViewController {
         if questionTextView.text == "" || answerTextField.text == "" {
             alert(title: "問題または回答の欄に空白があります。", message: "問題とそれに対する答えを入力してください。")
         }
+        let quizDictionary = ["question": questionTextView.text!, "answer": answerTextField.text!]
+//        quizArray.append(quizDictionary)
+        print("Detail quizArrayFromList.count: ",quizArrayFromList.count)
+        quizArrayFromList[indexPathUdf! - 1] = quizDictionary
+        UserDefaults.standard.set(quizArrayFromList, forKey: "QUIZ")
+        UserDefaults.standard.set(true, forKey: "backFromDetail")
         quiz.question = questionTextView.text!
         quiz.answer = answerTextField.text!
-        let quizDictionary = ["question": quiz.question, "answer": quiz.answer]
-        quizArray.append(quizDictionary)
-        UserDefaults.standard.set(quizArray, forKey: "QUIZ")
-        
-        let results = realm.objects(Quiz.self)
+        quiz.id = (UserDefaults.standard.object(forKey: "id") as? String)!
+        UserDefaults.standard.set(quiz.id, forKey: "detailID")
         try! realm.write{
-            results.setValue(questionTextView.text!, forKey: "question")
-            results.setValue(answerTextField.text!, forKey: "answer")
-            quiz.question = questionTextView.text!
-            quiz.answer = answerTextField.text!
+            realm.add(quiz, update: .modified)
         }
         self.navigationController?.popViewController(animated: true)
     }

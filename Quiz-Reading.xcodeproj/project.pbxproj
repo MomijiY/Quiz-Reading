@@ -10,6 +10,7 @@
 		03B85D726E35F349AC28FCE8 /* Pods_Quiz_Reading_Quiz_ReadingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 136FCFC23176F562BDAE498C /* Pods_Quiz_Reading_Quiz_ReadingUITests.framework */; };
 		583B65D468E0FA7513589034 /* Pods_Quiz_Reading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCDEE3AAE5D03D339B51215 /* Pods_Quiz_Reading.framework */; };
 		796A4949255DE75A003ECC94 /* TimerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A4948255DE75A003ECC94 /* TimerText.swift */; };
+		7975F26F255FD52400C846C0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7975F26E255FD52400C846C0 /* icon.png */; };
 		7990364725555E07009BD43F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990364625555E07009BD43F /* AppDelegate.swift */; };
 		7990364B25555E07009BD43F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7990364A25555E07009BD43F /* ViewController.swift */; };
 		7990364E25555E07009BD43F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7990364C25555E07009BD43F /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		79E5BFB02557BF1900CB33F0 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFAF2557BF1900CB33F0 /* FinishViewController.swift */; };
 		79E5BFB82557C1F300CB33F0 /* AnswerSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFB72557C1F300CB33F0 /* AnswerSpeechService.swift */; };
 		79E5BFC025580B0B00CB33F0 /* TextConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFBF25580B0B00CB33F0 /* TextConverter.swift */; };
+		79ED0F3925611600000E6541 /* quizDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED0F3825611600000E6541 /* quizDictionary.swift */; };
 		B2C1BCA08AF28030C1BDFD30 /* Pods_Quiz_ReadingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E1129324E8F41002A2AB7A /* Pods_Quiz_ReadingTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		5AAE4F095A0D474D08D2283F /* Pods-Quiz-ReadingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz-ReadingTests.debug.xcconfig"; path = "Target Support Files/Pods-Quiz-ReadingTests/Pods-Quiz-ReadingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74518926893525C25390B986 /* Pods-Quiz-ReadingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz-ReadingTests.release.xcconfig"; path = "Target Support Files/Pods-Quiz-ReadingTests/Pods-Quiz-ReadingTests.release.xcconfig"; sourceTree = "<group>"; };
 		796A4948255DE75A003ECC94 /* TimerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerText.swift; sourceTree = "<group>"; };
+		7975F26E255FD52400C846C0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7990364325555E07009BD43F /* Quiz-Reading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz-Reading.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7990364625555E07009BD43F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7990364A25555E07009BD43F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		79E5BFAF2557BF1900CB33F0 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		79E5BFB72557C1F300CB33F0 /* AnswerSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerSpeechService.swift; sourceTree = "<group>"; };
 		79E5BFBF25580B0B00CB33F0 /* TextConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConverter.swift; sourceTree = "<group>"; };
+		79ED0F3825611600000E6541 /* quizDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizDictionary.swift; sourceTree = "<group>"; };
 		7CCDEE3AAE5D03D339B51215 /* Pods_Quiz_Reading.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quiz_Reading.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F384E6CEB18F47748E3E50 /* Pods-Quiz-Reading-Quiz-ReadingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz-Reading-Quiz-ReadingUITests.debug.xcconfig"; path = "Target Support Files/Pods-Quiz-Reading-Quiz-ReadingUITests/Pods-Quiz-Reading-Quiz-ReadingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F63683D7080B5A2C80E385E8 /* Pods-Quiz-Reading-Quiz-ReadingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz-Reading-Quiz-ReadingUITests.release.xcconfig"; path = "Target Support Files/Pods-Quiz-Reading-Quiz-ReadingUITests/Pods-Quiz-Reading-Quiz-ReadingUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				799036AD255636AB009BD43F /* quiz.swift */,
+				79ED0F3825611600000E6541 /* quizDictionary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 		79A4325C255FA26F00C6B8AD /* Sound&Image */ = {
 			isa = PBXGroup;
 			children = (
+				7975F26E255FD52400C846C0 /* icon.png */,
 				79A4324F255F955000C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg */,
 				79A43254255FA25E00C6B8AD /* Quiz-Buzzer.mp3 */,
 			);
@@ -373,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A43250255F955100C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg in Resources */,
+				7975F26F255FD52400C846C0 /* icon.png in Resources */,
 				7990365625555E09009BD43F /* LaunchScreen.storyboard in Resources */,
 				7990365325555E09009BD43F /* Assets.xcassets in Resources */,
 				79A43255255FA25E00C6B8AD /* Quiz-Buzzer.mp3 in Resources */,
@@ -514,6 +521,7 @@
 				79E5BFC025580B0B00CB33F0 /* TextConverter.swift in Sources */,
 				79E5BFAB2557BB2C00CB33F0 /* SpeechService.swift in Sources */,
 				799036CE25566D36009BD43F /* NavigationViewController.swift in Sources */,
+				79ED0F3925611600000E6541 /* quizDictionary.swift in Sources */,
 				7990364B25555E07009BD43F /* ViewController.swift in Sources */,
 				799036DF25568F09009BD43F /* QuizDetailViewController.swift in Sources */,
 				79E5BFB82557C1F300CB33F0 /* AnswerSpeechService.swift in Sources */,
