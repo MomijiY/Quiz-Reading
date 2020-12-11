@@ -18,10 +18,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func tappedReadingButton(_ sender: UIButton) {
-        if UserDefaults.standard.object(forKey: "QUIZ") as? [Dictionary<String, String>] == nil {
-            alert(title: "表示するクイズがありません", message: "先に下の「追加」ボタンからクイズを追加してください。")
-        } else {
-            self.performSegue(withIdentifier: "toReading", sender: nil)
+        if UserDefaults.standard.array(forKey: "QUIZ") != nil {
+            if UserDefaults.standard.array(forKey: "QUIZ")!.count > 0 {
+                self.performSegue(withIdentifier: "toReading", sender: nil)
+            } else {
+                let alert = UIAlertController(title: "表示するクイズがありません", message: "先に下の「追加」ボタンから\nクイズを追加してください。", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     

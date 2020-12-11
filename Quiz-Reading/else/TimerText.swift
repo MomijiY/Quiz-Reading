@@ -55,23 +55,26 @@ class Timertext: UITextView {
             repeats: true)
 
         titlestr = self.text
-        self.text = ""
+//        self.text = ""
 
         tmr.invalidate()
     }
     
     func startFastAnimation() {
         let tmr = Timer.scheduledTimer(
-            timeInterval: 0.01,
+            timeInterval: 0.15,
             target: self,
             selector: #selector(tickTimer(_:)),
             userInfo: nil,
             repeats: true)
 
-        titlestr = self.text
+//        self.text = titlestr
         self.text = ""
 
-        tmr.fire()
+//        tmr.fire()
+        tmr.invalidate()
+        flgRun = false
+        idx = 0
     }
     @objc func tickTimer(_ timer: Timer) {
         //表示文字インデックス判定

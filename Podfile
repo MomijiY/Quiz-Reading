@@ -8,6 +8,7 @@ target 'Quiz-Reading' do
   # Pods for Quiz-Reading
 pod 'Realm'
 pod 'RealmSwift'
+pod 'Gecco'
   target 'Quiz-ReadingTests' do
     inherit! :search_paths
     # Pods for testing

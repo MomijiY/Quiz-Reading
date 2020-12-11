@@ -30,6 +30,10 @@
 		799036DF25568F09009BD43F /* QuizDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799036DE25568F09009BD43F /* QuizDetailViewController.swift */; };
 		79A43250255F955100C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 79A4324F255F955000C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg */; };
 		79A43255255FA25E00C6B8AD /* Quiz-Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79A43254255FA25E00C6B8AD /* Quiz-Buzzer.mp3 */; };
+		79BD67472572701800943E1F /* hayaosiButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 79BD67462572701800943E1F /* hayaosiButton.png */; };
+		79BD674C2573248F00943E1F /* Quiz-Wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79BD674B2573248F00943E1F /* Quiz-Wrong.mp3 */; };
+		79BD6751257324A500943E1F /* Quiz-Correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79BD6750257324A500943E1F /* Quiz-Correct.mp3 */; };
+		79BD67622573B47C00943E1F /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BD67612573B47C00943E1F /* AnnotationViewController.swift */; };
 		79E5BFAB2557BB2C00CB33F0 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFAA2557BB2C00CB33F0 /* SpeechService.swift */; };
 		79E5BFB02557BF1900CB33F0 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFAF2557BF1900CB33F0 /* FinishViewController.swift */; };
 		79E5BFB82557C1F300CB33F0 /* AnswerSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5BFB72557C1F300CB33F0 /* AnswerSpeechService.swift */; };
@@ -89,6 +93,10 @@
 		799036DE25568F09009BD43F /* QuizDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetailViewController.swift; sourceTree = "<group>"; };
 		79A4324F255F955000C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Quizzing-DisclosureIndicator.001.jpeg"; sourceTree = "<group>"; };
 		79A43254255FA25E00C6B8AD /* Quiz-Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Quiz-Buzzer.mp3"; sourceTree = "<group>"; };
+		79BD67462572701800943E1F /* hayaosiButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hayaosiButton.png; sourceTree = "<group>"; };
+		79BD674B2573248F00943E1F /* Quiz-Wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Quiz-Wrong.mp3"; sourceTree = "<group>"; };
+		79BD6750257324A500943E1F /* Quiz-Correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Quiz-Correct.mp3"; sourceTree = "<group>"; };
+		79BD67612573B47C00943E1F /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		79E5BFAA2557BB2C00CB33F0 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		79E5BFAF2557BF1900CB33F0 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		79E5BFB72557C1F300CB33F0 /* AnswerSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerSpeechService.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 			children = (
 				7990364625555E07009BD43F /* AppDelegate.swift */,
 				7990364A25555E07009BD43F /* ViewController.swift */,
+				79BD67612573B47C00943E1F /* AnnotationViewController.swift */,
 				79A4325C255FA26F00C6B8AD /* Sound&Image */,
 				799036D525568ADF009BD43F /* Quiz */,
 				799036BA25564CE1009BD43F /* QuizList */,
@@ -265,7 +274,10 @@
 			children = (
 				7975F26E255FD52400C846C0 /* icon.png */,
 				79A4324F255F955000C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg */,
+				79BD67462572701800943E1F /* hayaosiButton.png */,
 				79A43254255FA25E00C6B8AD /* Quiz-Buzzer.mp3 */,
+				79BD674B2573248F00943E1F /* Quiz-Wrong.mp3 */,
+				79BD6750257324A500943E1F /* Quiz-Correct.mp3 */,
 			);
 			path = "Sound&Image";
 			sourceTree = "<group>";
@@ -379,11 +391,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A43250255F955100C6B8AD /* Quizzing-DisclosureIndicator.001.jpeg in Resources */,
+				79BD674C2573248F00943E1F /* Quiz-Wrong.mp3 in Resources */,
 				7975F26F255FD52400C846C0 /* icon.png in Resources */,
 				7990365625555E09009BD43F /* LaunchScreen.storyboard in Resources */,
+				79BD6751257324A500943E1F /* Quiz-Correct.mp3 in Resources */,
 				7990365325555E09009BD43F /* Assets.xcassets in Resources */,
 				79A43255255FA25E00C6B8AD /* Quiz-Buzzer.mp3 in Resources */,
 				799036C225564FA1009BD43F /* QuizTableViewCell.xib in Resources */,
+				79BD67472572701800943E1F /* hayaosiButton.png in Resources */,
 				7990364E25555E07009BD43F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +542,7 @@
 				79E5BFB82557C1F300CB33F0 /* AnswerSpeechService.swift in Sources */,
 				79903698255635FB009BD43F /* AddContentTableViewController.swift in Sources */,
 				7990364725555E07009BD43F /* AppDelegate.swift in Sources */,
+				79BD67622573B47C00943E1F /* AnnotationViewController.swift in Sources */,
 				7990365125555E07009BD43F /* Quiz_Reading.xcdatamodeld in Sources */,
 				799036C125564FA1009BD43F /* QuizTableViewCell.swift in Sources */,
 			);
@@ -706,12 +722,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PS62975MFX;
 				INFOPLIST_FILE = "Quiz-Reading/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.Quiz-Reading";
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.Quizzing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -725,12 +744,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PS62975MFX;
 				INFOPLIST_FILE = "Quiz-Reading/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.Quiz-Reading";
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.Quizzing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
