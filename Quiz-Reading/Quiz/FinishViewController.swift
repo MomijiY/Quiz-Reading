@@ -20,6 +20,7 @@ class FinishViewController: UIViewController {
         let correctAnswer = UserDefaults.standard.object(forKey: "correctAnswer")
         let allQuizNum = UserDefaults.standard.object(forKey: "allQuizNum")
         gradeLabel.text = "正答率 \n \(correctAnswer!)/\(allQuizNum!)"
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func tappedFinishButton(_ sender: UIButton) {

@@ -23,6 +23,7 @@ class ListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.register(QuizTableViewCell.nib, forCellReuseIdentifier: QuizTableViewCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
+        navigationController?.setNavigationBarHidden(false, animated: true)
         loadQuiz()
     }
     

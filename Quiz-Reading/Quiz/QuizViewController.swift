@@ -18,8 +18,8 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var enterAnswerButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var questionTextView: Timertext!
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var navItem: UINavigationItem!
+//    @IBOutlet weak var navigationBar: UINavigationBar!
+//    @IBOutlet weak var navItem: UINavigationItem!
     
     var Item: Results<Quiz>!
     var items = [Quiz]()
@@ -73,7 +73,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         answerLabel.text = quizArray[nowNumber]["answer"]
         speechService.say(questionTextView.text)
         questionTextView.startAnimation()
-        navItem.title = "第\(nowNumber + 1)問/\(quizArray.count)問"
+        navigationController?.navigationItem.title = "第\(nowNumber + 1)問/\(quizArray.count)問"
         nextButton.setTitle("分かった", for: .normal)
     }
     
@@ -89,7 +89,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             answerLabel.text = ""
             if nowNumber < quizArray.count {
                 answerLabel.isHidden = true
-                navItem.title = "第\(nowNumber + 1)問/\(quizArray.count)問"
+                navigationController?.navigationItem.title = "第\(nowNumber + 1)問/\(quizArray.count)問"
                 questionLabel.text = quizArray[nowNumber]["question"]
                 questionTextView.text = quizArray[nowNumber]["question"]
                 answerLabel.text = quizArray[nowNumber]["answer"]
@@ -112,6 +112,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             }
         } else if answerButtonTappedCount == 1 {
             answerButtonTappedCount = 2
+            questionTextView.text = questionTextView.text + "/"
             let soundURL = Bundle.main.url(forResource: "Quiz-Buzzer", withExtension: "mp3")
             do {
                 player = try! AVAudioPlayer(contentsOf: soundURL!)
@@ -126,6 +127,16 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             enterAnswerButton.isHidden = false
             enterAnswerTextField.becomeFirstResponder()
             self.view.backgroundColor = UIColor(red: 209/255, green: 236/255, blue: 209/255, alpha: 0.8)
+            let str = questionTextView.text!
+            let prefixText = str.prefix(str.count)
+            let suffixText = questionLabel.text?.suffix(questionLabel.text!.count - str.count + 1)
+            print("prefixText", prefixText)
+            print("suffixText", suffixText!)
+//            let fromIdx = str.index(str.startIndex, offsetBy: 0)
+//            print("strStarIdx",str.startIndex)
+//            let toIdx = str.index(str.endIndex, offsetBy: -str.count)
+//            print("str[fromIdx...toIdx]",str[fromIdx...toIdx])
+            UserDefaults.standard.set(prefixText + suffixText!, forKey: "textCount")
         } else {
             showAnswer()
         }
@@ -159,6 +170,7 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
             print("incorrect")
         }
         enterAnswerTextField.text  = ""
+        questionTextView.text = UserDefaults.standard.object(forKey: "textCount") as? String
     }
 
     @IBAction func tappedBackButton(_ sender: UIBarButtonItem) {
@@ -200,7 +212,8 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         enterAnswerButton.isHidden = true
         
         enterAnswerTextField.delegate = self
-        navigationBar.barTintColor = UIColor(red: 209/255, green: 236/255, blue: 209/255, alpha: 0)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 209/255, green: 236/255, blue: 209/255, alpha: 0)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     func alert(title:String, message:String) {
         var alertController: UIAlertController!

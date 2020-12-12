@@ -77,6 +77,9 @@ class QuizDetailViewController: UITableViewController {
         
         questionTextView.inputAccessoryView = toolbar
         answerTextField.inputAccessoryView = toolbar2
+        
+        //navigationBar
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func alert(title:String, message:String) {

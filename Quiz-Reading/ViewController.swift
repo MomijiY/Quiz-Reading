@@ -14,8 +14,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
+//        setLayout()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setLayout()
     }
     @IBAction func tappedReadingButton(_ sender: UIButton) {
         if UserDefaults.standard.array(forKey: "QUIZ") != nil {
@@ -32,6 +37,7 @@ class ViewController: UIViewController {
     func setLayout() {
         readingButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func alert(title:String, message:String) {
